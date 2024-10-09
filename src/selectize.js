@@ -1486,26 +1486,33 @@ $.extend(Selectize.prototype, {
 	},
 
 	/**
-	 * Clears all options, including all selected items
+	 * Removes all options, by default including all selected items
 	 *
-	 * @param {boolean} silent
+	 * @param {boolean} [silent = false] If truthy, no change event will be fired on the original input. No effect if removeCurrentItems is false.
+	 * @param {boolean} [removeCurrentItems = true] If truthy, deselect and remove currently-selected items.
 	 */
-	clearOptions: function(silent) {
+	clearOptions: function(silent = false, removeCurrentItems = true) {
 		var self = this;
 
 		self.loadedSearches = {};
 		self.userOptions = {};
 		self.renderCache = {};
-		var options = self.options;
-		$.each(self.options, function(key, value) {
-			if(self.items.indexOf(key) == -1) {
-				delete options[key];
-			}
-		});
-		self.options = self.sifter.items = options;
+		if (removeCurrentItems) {
+			self.options = self.sifter.items = {};
+		} else {
+			var options = self.options;
+			$.each(self.options, function(key, value) {
+				if(self.items.indexOf(key) == -1) {
+					delete options[key];
+				}
+			});
+			self.options = self.sifter.items = options;
+		}
 		self.lastQuery = null;
 		self.trigger('option_clear');
-		self.clear(silent);
+		if (removeCurrentItems) {
+			self.clear(silent);
+		}
 	},
 
 	/**
