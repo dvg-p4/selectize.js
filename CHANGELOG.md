@@ -3,6 +3,21 @@
 <!-- Feel free to put either your handle and/or full name, according to
      your privacy needs -->
 
+## v0.16.0 [In development]
+
+### Breaking changes
+
+- `clearOptions()` now, by default, removes currently-selected items in addition to deselecting them,
+  as it did prior to selectize v0.12.5.
+  - This behavior is controlled by a new parameter `removeCurrentItems`, default `true`.
+  - If `removeCurrentItems` is set `false`, the function will instead leave currently-selected items
+    available *and selected*, as was the case from selectize v0.12.5, until v0.13.1 introduced
+    [#2146](https://github.com/selectize/selectize.js/issues/2146) (which this change fixes).
+  - For consistency, `silent` also has a (backwards-compatible) default value of `false` now.
+  - Thus, the full signature is now `clearOptions(silent = false, removeCurrentItems = true)`
+
+  _@dvg-p4_
+
 ## v0.15.1 · 17 11 2022
 
 - New feature: dynamically add option groups
