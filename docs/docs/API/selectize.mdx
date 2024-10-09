@@ -458,14 +458,15 @@ Removes a single option.
 
 <a name="clearOptions"></a>
 
-## clearOptions(silent)
-Clears all options, including all selected items
+## clearOptions([silent], [removeCurrentItems])
+Removes all options, by default including all selected items
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| silent | <code>boolean</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [silent] | <code>boolean</code> | <code>false</code> | If truthy, no change event will be fired on the original input. No effect if removeCurrentItems is false. |
+| [removeCurrentItems] | <code>boolean</code> | <code>true</code> | If truthy, deselect and remove currently-selected items. |
 
 <a name="getOption"></a>
 
