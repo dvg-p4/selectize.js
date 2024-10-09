@@ -24,8 +24,10 @@
     "url": "git://github.com/selectize/selectize.js.git"
   },
   "files": [
+    "index.d.ts",
     "dist/*"
   ],
+  "types": "index.d.ts",
   "devDependencies": {
     "@risadams/gulp-wrapper": "1.0.0",
     "@types/jquery": "^3.5.16",
